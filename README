@@ -1,0 +1,36 @@
+This is JCaller, a generic service caller framework, supporting external
+configurations, load balancing and fail-over.
+
+This is free and open source software, available under the terms of a
+BSD-style license, see the accompanied COPYRIGHT file.
+
+
+BUILDING JCALLER
+
+To build JCaller, use Apache Ant (version 1.7.1 works) and execute:
+
+   ant
+
+Under the target/ directory files will be generated, including a JAR file and
+Javadoc API documentation.
+
+
+HISTORY
+
+JCaller is based on XINS code, see:
+
+   http://www.xins.org/
+
+It has been factored out of XINS by me.
+
+
+BUG REPORTS AND FEATURE REQUESTS
+
+If you want to file a bug report or a feature request, please do so here:
+
+   http://github.com/znerd/jcaller/issues
+
+
+--
+Ernst de Haan
+ernst@ernstdehaan.com
