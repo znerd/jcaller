@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.StringTokenizer;
 
-import org.xins.common.Log;
-import org.xins.common.collections.InvalidPropertyValueException;
-import org.xins.common.collections.MissingRequiredPropertyException;
 import org.xins.common.collections.PropertyReader;
 import org.xins.common.collections.PropertyReaderUtils;
 

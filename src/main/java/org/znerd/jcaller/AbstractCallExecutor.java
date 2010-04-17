@@ -4,10 +4,6 @@ package org.znerd.jcaller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.xins.common.Log;
-import org.xins.common.MandatoryArgumentChecker;
-import org.xins.common.logging.LoggingThread;
-
 /**
  * Abstract base class for call executors, used from within service caller
  * implementations.
@@ -256,6 +252,13 @@ public abstract class AbstractCallExecutor extends LoggingThread {
     *
     * <p>To cleanup after all the information is analyzed and the thread can
     * be garbage collected, use {@link #dispose()} instead.
+    *
+    * <p>This method throws away any exceptions thrown by the implementation 
+    * method {@link #cleanupImpl()}, after notifying the context by calling
+    * {@link LibraryContext#programmingError(String,String,String,String,String,Throwable)}.
+    *
+    * @throws IllegalStateException
+    *    if the current state does not correspond with cleaning up.
     */
    protected final void cleanup() throws IllegalStateException {
 
@@ -268,7 +271,8 @@ public abstract class AbstractCallExecutor extends LoggingThread {
       try {
          cleanupImpl();
       } catch (Throwable exception) {
-         Log.log_1052(exception, AbstractCallExecutor.class.getName(), "runImpl()", getClass().getName(), "cleanupImpl()", null);
+         String message = null;
+         Library.getContext().programmingError(AbstractCallExecutor.class.getName(), "cleanup()", getClass().getName(), "cleanupImpl()", message, exception);
       }
    }
 
@@ -303,7 +307,8 @@ public abstract class AbstractCallExecutor extends LoggingThread {
       try {
          disposeImpl();
       } catch (Throwable exception) {
-         Log.log_1052(exception, AbstractCallExecutor.class.getName(), "dispose()", getClass().getName(), "disposeImpl()", null);
+         String message = null;
+         Library.getContext().programmingError(AbstractCallExecutor.class.getName(), "dispose()", getClass().getName(), "disposeImpl()", message, exception);
       }
 
       // Then dispose this class self

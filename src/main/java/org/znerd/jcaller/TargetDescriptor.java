@@ -13,9 +13,8 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.zip.CRC32;
 
-import org.xins.common.text.HexConverter;
-
 import static org.znerd.jcaller.Library.isEmpty;
+import static org.znerd.jcaller.Library.toHexString;
 
 /**
  * Descriptor for a single target service. A target descriptor defines a URL
@@ -80,9 +79,10 @@ public final class TargetDescriptor extends Descriptor {
       try {
          bytes = s.getBytes(ENCODING);
 
-      // Unsupported exception
+      // Unsupported encoding
       } catch (UnsupportedEncodingException exception) {
-         throw Library.getContext().logProgrammingError(exception);
+         String message = "Unsupporting encoding \"" + ENCODING + "\".";
+         throw Library.getContext().programmingError(TargetDescriptor.class.getName(), "computeCRC32(String)", "java.lang.String", "getBytes(java.lang.String)", message, exception);
       }
 
       checksum.update(bytes, 0, bytes.length);
@@ -539,7 +539,7 @@ public final class TargetDescriptor extends Descriptor {
          buffer.append(" [url=\"");
          buffer.append(_url);
          buffer.append("\"; crc=\"");
-         buffer.append(HexConverter.toHexString(_crc));
+         buffer.append(toHexString(_crc));
          buffer.append("\"; total time-out is ");
          if (_timeOut < 1) {
             buffer.append("disabled; connection time-out is ");

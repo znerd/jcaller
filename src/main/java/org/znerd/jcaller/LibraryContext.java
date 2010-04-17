@@ -54,12 +54,12 @@ public interface LibraryContext {
     *    an appropriate {@link RuntimeException} that can be thrown by the
     *    calling method, never <code>null</code>.
     */
-   public static RuntimeException programmingError(String    detectingClass,
-                                                   String    detectingMethod,
-                                                   String    subjectClass,
-                                                   String    subjectMethod,
-                                                   String    detail,
-                                                   Throwable cause);
+   public RuntimeException programmingError(String    detectingClass,
+                                            String    detectingMethod,
+                                            String    subjectClass,
+                                            String    subjectMethod,
+                                            String    detail,
+                                            Throwable cause);
 
    public void ignoredException(Throwable exception);
 

@@ -220,8 +220,9 @@ public abstract class ServiceCaller {
             callConfig = getDefaultCallConfig();
 
          // ...it should not throw any exception...
-         } catch (Throwable t) {
-            throw Library.getContext().programmingError(t);
+         } catch (Throwable cause) {
+            String message = null;
+            throw Library.getContext().programmingError(ServiceCaller.class.getName(), "<init>(Descriptor,CallConfig)", getClass().getName(), "getDefaultConfig()", message, cause);
          }
 
          // ...and it should never return null.
@@ -451,6 +452,8 @@ public abstract class ServiceCaller {
       // Check preconditions
       MandatoryArgumentChecker.check("request", request);
 
+      LibraryContext context = Library.getContext();
+
       // Determine descriptor
       Descriptor descriptor = _descriptor;
       if (descriptor == null) {
@@ -486,7 +489,8 @@ public abstract class ServiceCaller {
 
       // There should be at least one target
       if (! iterator.hasNext()) {
-         throw Library.getContext().programmingError(ServiceCaller.class.getName(), "doCall(CallRequest,CallConfig)", descriptor.getClass().getName(), "iterator()", "Descriptor (" + descriptor + ") returns no target descriptors.");
+         Throwable cause = null;
+         throw context.programmingError(ServiceCaller.class.getName(), "doCall(CallRequest,CallConfig)", descriptor.getClass().getName(), "iterator()", "Descriptor (" + descriptor + ") returns no target descriptors.", cause);
       }
 
       // Loop over all TargetDescriptors
@@ -495,13 +499,12 @@ public abstract class ServiceCaller {
 
          // Get a reference to the next TargetDescriptor
          TargetDescriptor target = iterator.next();
-         String           url    = target.getURL();
+         String              url = target.getURL();
 
          // Call using this target
-         LibraryContext context = Library.getContext();
-         Object          result = null;
-         boolean      succeeded = false;
-         long             start = System.currentTimeMillis();
+         Object     result = null;
+         boolean succeeded = false;
+         long        start = System.currentTimeMillis();
 
          context.beforeTargetCall(url);
          try {

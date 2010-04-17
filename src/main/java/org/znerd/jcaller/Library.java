@@ -106,6 +106,41 @@ public final class Library {
       return (s == null) || (s.length() == 0);
    }
 
+   /**
+    * Converts the specified <code>int</code> to an unsigned number hex
+    * string. The returned string will always consist of 8 hex characters,
+    * zeroes will be prepended as necessary.
+    *
+    * @param n
+    *    the number to be converted to a hex string.
+    *
+    * @return
+    *    the hex string, cannot be <code>null</code>, the length is always 8
+    *    (i.e. <code><em>return</em>.</code>{@link String#length() length()}<code> == 8</code>).
+    */
+   static String toHexString(int n) {
+
+      final char[]  DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7' , '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+      final int INT_LENGTH = 8;
+      final int      RADIX = 16;
+      final int   INT_MASK = RADIX - 1;
+
+      char[] chars = new char[INT_LENGTH];
+      int      pos = INT_LENGTH - 1;
+
+      // Convert the int to a hex string until the remainder is 0
+      for (; n != 0; n >>>= 4) {
+         chars[pos--] = DIGITS[n & INT_MASK];
+      }
+
+      // Fill the rest with '0' characters
+      for (; pos >= 0; pos--) {
+         chars[pos] = '0';
+      }
+
+      return new String(chars, 0, INT_LENGTH);
+   }
+
    
    //-------------------------------------------------------------------------
    // Constructors
