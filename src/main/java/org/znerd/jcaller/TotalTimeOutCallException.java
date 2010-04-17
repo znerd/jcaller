@@ -10,6 +10,20 @@ package org.znerd.jcaller;
 public final class TotalTimeOutCallException
 extends GenericCallException {
 
+   //-------------------------------------------------------------------------
+   // Class fields
+   //-------------------------------------------------------------------------
+
+   /**
+    * Serial version UID. Used for serialization.
+    */
+   private static final long serialVersionUID = 6391232463238737771L;
+
+
+   //-------------------------------------------------------------------------
+   // Constructors
+   //-------------------------------------------------------------------------
+
    /**
     * Constructs a new <code>TotalTimeOutCallException</code>.
     *

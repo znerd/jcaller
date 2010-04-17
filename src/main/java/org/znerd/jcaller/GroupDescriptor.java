@@ -20,6 +20,15 @@ import java.util.Random;
  */
 public final class GroupDescriptor extends Descriptor {
 
+   //-------------------------------------------------------------------------
+   // Class fields
+   //-------------------------------------------------------------------------
+
+   /**
+    * Serial version UID. Used for serialization.
+    */
+   private static final long serialVersionUID = -2945764325774744627L;
+
    /**
     * The identifier of the <em>random</em> group type.
     */
@@ -44,6 +53,11 @@ public final class GroupDescriptor extends Descriptor {
     * Pseudo-random number generator.
     */
    private static final Random RANDOM = new Random();
+
+
+   //-------------------------------------------------------------------------
+   // Constructors
+   //-------------------------------------------------------------------------
 
    /**
     * Constructs a new <code>GroupDescriptor</code>. The members to be
@@ -266,6 +280,11 @@ public final class GroupDescriptor extends Descriptor {
     * @author <a href="mailto:ernst@ernstdehaan.com">Ernst de Haan</a>
     */
    public static final class Type implements Serializable {
+
+      /**
+       * Serial version UID. Used for serialization.
+       */
+      private static final long serialVersionUID = -3418705789523454836L;
 
       /**
        * Constructs a new <code>Type</code> with the specified description.

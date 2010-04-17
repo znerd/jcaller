@@ -10,6 +10,20 @@ package org.znerd.jcaller;
 public final class NoRouteToHostCallException
 extends ConnectionCallException {
 
+   //-------------------------------------------------------------------------
+   // Class fields
+   //-------------------------------------------------------------------------
+
+   /**
+    * Serial version UID. Used for serialization.
+    */
+   private static final long serialVersionUID = 5009273022320003986L;
+
+
+   //-------------------------------------------------------------------------
+   // Constructors
+   //-------------------------------------------------------------------------
+
    /**
     * Constructs a new <code>NoRouteToHostCallException</code>.
     *

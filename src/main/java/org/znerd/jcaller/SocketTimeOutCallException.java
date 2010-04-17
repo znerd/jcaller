@@ -10,10 +10,19 @@ package org.znerd.jcaller;
 public final class SocketTimeOutCallException
 extends GenericCallException {
 
+   //-------------------------------------------------------------------------
+   // Class fields
+   //-------------------------------------------------------------------------
+
    /**
     * Serial version UID. Used for serialization.
     */
    private static final long serialVersionUID = 3960746542315816035L;
+
+
+   //-------------------------------------------------------------------------
+   // Constructors
+   //-------------------------------------------------------------------------
 
    /**
     * Constructs a new <code>SocketTimeOutCallException</code>.

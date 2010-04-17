@@ -37,6 +37,15 @@ import org.xins.common.text.TextUtils;
  */
 public final class TargetDescriptor extends Descriptor {
 
+   //-------------------------------------------------------------------------
+   // Class fields
+   //-------------------------------------------------------------------------
+
+   /**
+    * Serial version UID. Used for serialization.
+    */
+   private static final long serialVersionUID = -2945764325774744627L;
+
    /**
     * The number of instances of this class. Initially 0.
     */
@@ -195,6 +204,11 @@ public final class TargetDescriptor extends Descriptor {
     * The CRC-32 checksum for the URL.
     */
    private final int _crc;
+
+
+   //-------------------------------------------------------------------------
+   // Constructors
+   //-------------------------------------------------------------------------
 
    /**
     * Constructs a new <code>TargetDescriptor</code> for the specified URL.

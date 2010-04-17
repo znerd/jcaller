@@ -9,6 +9,20 @@ package org.znerd.jcaller;
  */
 public final class TimeOutException extends Exception {
 
+   //-------------------------------------------------------------------------
+   // Class fields
+   //-------------------------------------------------------------------------
+
+   /**
+    * Serial version UID. Used for serialization.
+    */
+   private static final long serialVersionUID = -3834976345624635351L;
+
+
+   //-------------------------------------------------------------------------
+   // Constructors
+   //-------------------------------------------------------------------------
+
    /**
     * Constructs a new <code>TimeOutException</code>.
     */
