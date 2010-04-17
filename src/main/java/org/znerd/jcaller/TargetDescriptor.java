@@ -14,7 +14,8 @@ import java.util.Set;
 import java.util.zip.CRC32;
 
 import org.xins.common.text.HexConverter;
-import org.xins.common.text.TextUtils;
+
+import static org.znerd.jcaller.Library.isEmpty;
 
 /**
  * Descriptor for a single target service. A target descriptor defines a URL
@@ -131,7 +132,7 @@ public final class TargetDescriptor extends Descriptor {
             String host     = uri.getHost();
 
             // Some protocols are known to require a host name. Check this.
-            if (PROTOCOLS_REQUIRING_HOST.contains(protocol) && TextUtils.isEmpty(host)) {
+            if (PROTOCOLS_REQUIRING_HOST.contains(protocol) && isEmpty(host)) {
                error = true;
             }
          }

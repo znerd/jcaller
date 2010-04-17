@@ -92,6 +92,20 @@ public final class Library {
       }
    }
    
+   /**
+    * Determines if the specified string is <code>null</code> or an empty
+    * string.
+    *
+    * @param s
+    *    the string, or <code>null</code>.
+    *
+    * @return
+    *    <code>true</code> if <code>s == null || s.length() &lt; 1</code>.
+    */
+   static boolean isEmpty(String s) {
+      return (s == null) || (s.length() == 0);
+   }
+
    
    //-------------------------------------------------------------------------
    // Constructors

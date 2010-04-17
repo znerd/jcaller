@@ -11,8 +11,8 @@ package org.znerd.jcaller;
 public interface LibraryContext {
 
    /**
-    * Handles a programming error (possibly logging it) and returning an
-    * exception to be thrown by the caller.
+    * Handles a programming error and returns an exception to be thrown by the
+    * caller. Typically the issue is logged.
     *
     * @param message
     *    a detail message describing the programming error,
@@ -24,7 +24,42 @@ public interface LibraryContext {
     */
    public RuntimeException programmingError(String message);
 
-   public RuntimeException programmingError(Throwable exception);
+   /**
+    * Handles a programming error and returns an exception to be thrown by the
+    * caller. Typically the issue is logged.
+    *
+    * @param detectingClass
+    *    the name of the class that detected the problem, or
+    *    <code>null</code> if unknown.
+    *
+    * @param detectingMethod
+    *    the name of the method within the <code>detectingClass</code> that
+    *    detected the problem, or <code>null</code> if unknown.
+    *
+    * @param subjectClass
+    *    the name of the class which exposes the programming error, or
+    *    <code>null</code> if unknown.
+    *
+    * @param subjectMethod
+    *    the name of the method (within the <code>subjectClass</code>) which
+    *    exposes the programming error, or <code>null</code> if unknown.
+    *
+    * @param detail
+    *    the detail message, can be <code>null</code>.
+    *
+    * @param cause
+    *    the cause exception, can be <code>null</code>.
+    *
+    * @return
+    *    an appropriate {@link RuntimeException} that can be thrown by the
+    *    calling method, never <code>null</code>.
+    */
+   public static RuntimeException programmingError(String    detectingClass,
+                                                   String    detectingMethod,
+                                                   String    subjectClass,
+                                                   String    subjectMethod,
+                                                   String    detail,
+                                                   Throwable cause);
 
    public void ignoredException(Throwable exception);
 
