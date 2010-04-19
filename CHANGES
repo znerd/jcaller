@@ -1,0 +1,9 @@
+--- CHANGES SINCE JCALLER 0.1 (COMPARED TO XINS 2.X) -------------------------
+
+* Changed package names from org.xins.common.service to org.znerd.jcaller.
+* Removed DescriptorBuilder class.
+* Now only Java 1.5 and up are supported.
+* Added LibraryContext interface and Library class.
+* Added SSLConnectCallException class.
+* Added AbstractCallExecutor helper class.
+* Added LoggingThread helper class that properly deals with Log4J NDCs.
