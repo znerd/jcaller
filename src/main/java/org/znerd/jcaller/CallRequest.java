@@ -4,7 +4,7 @@ package org.znerd.jcaller;
 import java.io.Serializable;
 
 /**
- * Abstraction of a request for a <code>ServiceCaller</code> call. Specific
+ * Abstraction of a request for a <code>Caller</code> call. Specific
  * service callers typically only accept a single type of request, derived
  * from this class.
  *
@@ -23,7 +23,7 @@ import java.io.Serializable;
  *
  * @author <a href="mailto:ernst@ernstdehaan.com">Ernst de Haan</a>
  *
- * @see ServiceCaller
+ * @see Caller
  */
 public abstract class CallRequest implements Serializable {
 

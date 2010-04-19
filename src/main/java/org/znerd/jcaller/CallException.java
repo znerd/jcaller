@@ -2,9 +2,9 @@
 package org.znerd.jcaller;
 
 /**
- * Root class for all exceptions that indicate a <code>ServiceCaller</code>
+ * Root class for all exceptions that indicate a <code>Caller</code>
  * call failed. This exception is typically only thrown by class
- * {@link ServiceCaller} and subclasses.
+ * {@link Caller} and subclasses.
  *
  * <p>Call exceptions can be linked. The first exception is then actually
  * thrown to the caller. The caller can get the linked exceptions using

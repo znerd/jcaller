@@ -8,7 +8,7 @@ package org.znerd.jcaller;
  * @author <a href="mailto:ernst@ernstdehaan.com">Ernst de Haan</a>
  *
  * @see TargetDescriptor
- * @see ServiceCaller
+ * @see Caller
  */
 public final class UnsupportedProtocolException
 extends RuntimeException {

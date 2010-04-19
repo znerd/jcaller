@@ -107,17 +107,17 @@ import java.util.Iterator;
  * applied:
  *
  * <ul>
- *    <li>associated with a <code>ServiceCaller</code>;
+ *    <li>associated with a <code>Caller</code>;
  *    <li>associated with a <code>CallRequest</code>;
  *    <li>passed with the call method.
  * </ul>
  *
- * <p>First of all, each <code>ServiceCaller</code> instance will have a
+ * <p>First of all, each <code>Caller</code> instance will have a
  * fall-back <code>CallConfig</code>.
  *
  * <p>Secondly, a {@link CallRequest} instance may have a
  * <code>CallConfig</code> associated with it as well. If it does, then this
- * overrides the one on the <code>ServiceCaller</code> instance.
+ * overrides the one on the <code>Caller</code> instance.
  *
  * <p>Finally, a <code>CallConfig</code> can be passed as an argument to the
  * call method. If it is, then this overrides any other settings.
@@ -140,13 +140,13 @@ import java.util.Iterator;
  *        object. This constructor should call
  *        <code>super(descriptor, ({@link CallConfig}) null)</code>.
  *        This descriptor should document the same exceptions as the
- *        {@link #ServiceCaller(Descriptor,CallConfig)} constructor.
+ *        {@link #Caller(Descriptor,CallConfig)} constructor.
  *    <li>There should be a constructor that accepts both a
  *        {@link Descriptor} and a service-specific call config object
  *        (derived from {@link CallConfig}).  This constructor should call
  *        <code>super(descriptor, callConfig)</code>.
  *        This descriptor should document the same exceptions as the
- *        {@link #ServiceCaller(Descriptor,CallConfig)} constructor.
+ *        {@link #Caller(Descriptor,CallConfig)} constructor.
  *    <li>The method {@link #isProtocolSupportedImpl(String)} must be
  *        implemented.
  *    <li>There should be a <code>call</code> method that accepts only a
@@ -175,7 +175,7 @@ import java.util.Iterator;
  *
  * @author <a href="mailto:ernst@ernstdehaan.com">Ernst de Haan</a>
  */
-public abstract class ServiceCaller {
+public abstract class Caller {
 
    /**
     * The descriptor for this service. Can be <code>null</code>.
@@ -189,7 +189,7 @@ public abstract class ServiceCaller {
    private CallConfig _callConfig;
 
    /**
-    * Constructs a new <code>ServiceCaller</code> with the specified
+    * Constructs a new <code>Caller</code> with the specified
     * <code>CallConfig</code>.
     *
     * <p>The descriptor is not mandatory. However, no calls can be made with
@@ -206,7 +206,7 @@ public abstract class ServiceCaller {
     *    if <code>descriptor</code> is or contains a {@link TargetDescriptor}
     *    with an unsupported protocol.
     */
-   protected ServiceCaller(Descriptor descriptor, CallConfig callConfig)
+   protected Caller(Descriptor descriptor, CallConfig callConfig)
    throws UnsupportedProtocolException {
 
       // Store information
@@ -222,12 +222,12 @@ public abstract class ServiceCaller {
          // ...it should not throw any exception...
          } catch (Throwable cause) {
             String message = null;
-            throw Library.getContext().programmingError(ServiceCaller.class.getName(), "<init>(Descriptor,CallConfig)", getClass().getName(), "getDefaultConfig()", message, cause);
+            throw Library.getContext().programmingError(Caller.class.getName(), "<init>(Descriptor,CallConfig)", getClass().getName(), "getDefaultConfig()", message, cause);
          }
 
          // ...and it should never return null.
          if (callConfig == null) {
-            throw Library.getContext().programmingError("Method returned null, although that is disallowed by the ServiceCaller.getDefaultCallConfig() contract.");
+            throw Library.getContext().programmingError("Method returned null, although that is disallowed by the Caller.getDefaultCallConfig() contract.");
          }
       }
 
@@ -311,7 +311,7 @@ public abstract class ServiceCaller {
     * <p>This method should only ever be called from the
     * {@link #isProtocolSupported(String)} method.
     *
-    * <p>The implementation of this method in class <code>ServiceCaller</code>
+    * <p>The implementation of this method in class <code>Caller</code>
     * throws an {@link UnsupportedOperationException}.
     *
     * @param protocol
@@ -392,7 +392,7 @@ public abstract class ServiceCaller {
 
    /**
     * Returns a default <code>CallConfig</code> object. This method is called
-    * by the <code>ServiceCaller</code> constructor if no
+    * by the <code>Caller</code> constructor if no
     * <code>CallConfig</code> object was given.
     *
     * <p>This method should never be called by subclasses.
@@ -427,7 +427,7 @@ public abstract class ServiceCaller {
     *    the call configuration, or <code>null</code> if the one defined for
     *    the call request should be used if specified, or otherwise the
     *    fall-back call configuration associated with this
-    *    <code>ServiceCaller</code> (see {@link #getCallConfig()}).
+    *    <code>Caller</code> (see {@link #getCallConfig()}).
     *
     * @return
     *    a combination of the call result and a link to the
@@ -490,7 +490,7 @@ public abstract class ServiceCaller {
       // There should be at least one target
       if (! iterator.hasNext()) {
          Throwable cause = null;
-         throw context.programmingError(ServiceCaller.class.getName(), "doCall(CallRequest,CallConfig)", descriptor.getClass().getName(), "iterator()", "Descriptor (" + descriptor + ") returns no target descriptors.", cause);
+         throw context.programmingError(Caller.class.getName(), "doCall(CallRequest,CallConfig)", descriptor.getClass().getName(), "iterator()", "Descriptor (" + descriptor + ") returns no target descriptors.", cause);
       }
 
       // Loop over all TargetDescriptors
@@ -730,7 +730,7 @@ public abstract class ServiceCaller {
     * <code>false</code> it does some additional checks, otherwise
     * <code>true</code> is immediately returned.
     *
-    * <p>The implementation of this method in class {@link ServiceCaller}
+    * <p>The implementation of this method in class {@link Caller}
     * returns <code>true</code> if and only if at least one of the following
     * conditions is true:
     *

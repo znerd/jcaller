@@ -18,7 +18,7 @@ import java.io.Serializable;
  * @author <a href="mailto:ernst@ernstdehaan.com">Ernst de Haan</a>
  * @author <a href="mailto:anthony.goubard@japplis.com">Anthony Goubard</a>
  *
- * @see ServiceCaller
+ * @see Caller
  * @see CallRequest
  */
 public abstract class CallConfig implements Serializable {
