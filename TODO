@@ -1,4 +1,5 @@
 * Have at least one unit test.
+* Use Maven to generate project docs, including a simple web site.
 * Have a basic and default LibraryContext implementation.
 * Remove CallExceptionList in favor of a Java 5+ type-safe collection.
-* Add a DescriptorBuilder
+* Add a DescriptorBuilder class.
