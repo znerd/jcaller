@@ -8,7 +8,6 @@ import org.apache.log4j.NDC;
  * (see class {@link NDC} is automatically passed from the invoking thread to
  * this one.
  *
- * @version $Revision$ $Date$
  * @author <a href="mailto:ernst@ernstdehaan.com">Ernst de Haan</a>
  */
 public abstract class LoggingThread extends Thread {
