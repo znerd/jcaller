@@ -1,0 +1,4 @@
+* Have at least one unit test.
+* Have a basic and default LibraryContext implementation.
+* Remove CallExceptionList in favor of a Java 5+ type-safe collection.
+* Add a DescriptorBuilder
