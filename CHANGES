@@ -2,6 +2,7 @@
 
 * Renamed ServiceCaller to Caller.
 * Added missing API docs for LibraryContext methods.
+* Removed PropertyException classes.
 
 
 --- CHANGES SINCE JCALLER 0.1 (COMPARED TO XINS 2.X) -------------------------

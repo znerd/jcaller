@@ -352,11 +352,35 @@ public abstract class AbstractCallExecutor extends LoggingThread {
     * @author <a href="mailto:ernst@ernstdehaan.com">Ernst de Haan</a>
     */
    public enum State {
+
+      /**
+       * Initial state, no call done.
+       */
       INITIAL,
+
+      /**
+       * Executing a call now.
+       */
       EXECUTING_CALL,
+
+      /**
+       * Call done, cleaning up. See the {@link #cleanup()} method.
+       */
       CLEANING_UP_AFTER_CALL,
+
+      /**
+       * Call completed, including clean-up.
+       */
       CALL_COMPLETED,
+
+      /**
+       * Disposing of this call executor object. See {@link #dispose()}.
+       */
       DISPOSING,
-      DISPOSED
+
+      /**
+       * This call executor object has been disposed and is no longer usable.
+       */
+      DISPOSED;
    }
 }
