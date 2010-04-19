@@ -271,7 +271,7 @@ public final class GroupDescriptor extends Descriptor {
     */
    @Override
    public TargetDescriptor getTargetByCRC(int crc) {
-      return (TargetDescriptor) _targetsByCRC.get(new Integer(crc));
+      return _targetsByCRC.get(new Integer(crc));
    }
 
    /**
