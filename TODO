@@ -3,3 +3,5 @@
 * Have a basic and default LibraryContext implementation.
 * Remove CallExceptionList in favor of a Java 5+ type-safe collection.
 * Add a DescriptorBuilder class.
+* Make the AbstractCallExecutor type-safe with generics.
+* Make the Caller type-safe with generics.
